@@ -1,40 +1,15 @@
-# Ibex Template
+# BruhNews
 
-Simple template for an [Ibex](https://github.com/darccyy/ibex) SSG site.
+Very nice website 😁
 
-- [Live on GitHub Pages](https://darccyy.github.io/ibex-template)
+https://bruh.news
 
-# Usage
+Now updated to version 3.0 !!! wow! 😁
 
-```sh
-# Clone the repo
-git clone https://github.com/darccyy/ibex-template my-ibex-app
-cd my-ibex-app
+Tell all of your friends about this website, because it is very nice!
 
-# Install some dev dependencies
-cargo install just cargo-watch basic-http-server
+Email concerns: [help@bruh.news](mailto:help@bruh.news?subject=Help!%20I%20have%20a%20problem!&body=...problem%20here...)
 
-# Build and open a local server on localhost:4000
-just serve
-```
+Made with [Ibex](https://github.com/darccyy/ibex)
 
-## GitHub Pages Setup
-
-GitHub will automatically build to the `gh-pages` branch, with the `deploy.yaml` Action. The action will automatically run when the repository is initially cloned.
-
-In repository settings, navigate to the `Pages` tab, and change 'Branch' to `gh-pages`. GitHub pages will automatically update, and the website should be live soon.
-
-# File structure
-
-No Rust code is included in the website itself. It is just for compilation.
-
-- Everything is compiled to `/build` (except `/target`)
-- Source files are included in `/src`
-    - `/src` is the Rust binary source folder
-    - `/src/scss` will be compiled to css and written to `/build/css`
-    - `/src/js` can be used to `include_str!` Javascript code into templates
-- Static files (such as images or assets) are found in `/static`, and are copied directly into `/build/static`
-    - `/static` may be symlinked in development mode (for compilation speed), but never in production
-
-![Ibex logo](static/icon.png)
-
+<img src="static/icon.png" />
