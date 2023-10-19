@@ -1,0 +1,196 @@
+[blur] {
+  animation: blur 1.5s;
+  filter: blur(3px);
+}
+
+body {
+  font-size: clamp(12px, 2.5vw, 20px);
+  font-family: Verdana, sans-serif;
+  background-color: #171313;
+  color: white;
+  /* Don't worry about i! */
+}
+body a {
+  color: inherit;
+}
+body a:not(:hover) {
+  text-decoration: none;
+}
+body .header {
+  margin: 20px 0;
+  font-size: clamp(15px, 25vw, 500);
+}
+body .list {
+  padding-left: 0;
+}
+body .list .article {
+  display: flex;
+  height: 90px;
+  list-style: none;
+}
+body .list .article:not(:first-of-type) {
+  margin-top: 25px;
+}
+body .list .article a {
+  display: flex;
+  cursor: pointer;
+}
+body .list .article a:hover h1 {
+  text-decoration: underline;
+}
+body .list .article a img {
+  aspect-ratio: 1/1;
+  height: 90px;
+  width: 90px;
+  border-radius: 5px;
+  object-fit: cover;
+  transition: transform 0.2s;
+  margin-left: 10px;
+}
+body .list .article a img:hover {
+  transform: scale(0.9);
+}
+body .list .article a .text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+body .list .article a .text .wrap {
+  margin: auto;
+  overflow: hidden;
+  color: white;
+}
+body .list .article a .text .wrap .headline {
+  margin: 0;
+  font-size: 120%;
+}
+body .list .article a .text .wrap p {
+  display: inline-block;
+  margin: 0;
+  margin-top: 10px;
+  font-size: 85%;
+  padding-left: 10px;
+}
+body .list .article a .text .wrap p .title {
+  font-style: italic;
+}
+body .modal-backdrop {
+  position: fixed;
+  display: none;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #08080870;
+  z-index: 500;
+  animation: fade 0.7s;
+}
+body .modal-backdrop[show] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .modal-backdrop[show] .modal {
+  background-color: #222;
+  max-width: min(25ch, 80%);
+  padding: 15px;
+  border: 2px solid #666;
+  border-radius: 5px;
+  text-align: center;
+  animation: slide 0.7s;
+  font-size: 90%;
+}
+body .modal-backdrop[show] .modal h1 {
+  margin: 0;
+  font-size: 100%;
+}
+body .modal-backdrop[show] .modal p {
+  margin: 10px 0;
+}
+body .modal-backdrop[show] .modal button {
+  background-color: inherit;
+  border: none;
+  font-size: 60%;
+  cursor: pointer;
+  color: #008461;
+}
+body .modal-backdrop[show] .modal button:hover {
+  text-decoration: underline;
+}
+body .modal-backdrop[show] .modal button.big {
+  font-size: 110%;
+  padding: 7px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: #085e47;
+  color: white;
+}
+body .modal-backdrop[show] .modal button.big:hover {
+  background-color: #008461;
+}
+@keyframes blur {
+  from {
+    filter: none;
+  }
+  to {
+    filter: blur(3px);
+  }
+}
+@keyframes fade {
+  from {
+    background-color: transparent;
+  }
+  20% {
+    background-color: transparent;
+  }
+  to {
+    background-color: #08080870;
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateY(130px);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+body footer {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px;
+  z-index: 999;
+}
+body footer a {
+  background-color: #000;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+}
+body footer a:not(:first-of-type) {
+  margin-left: 5px;
+}
+body .video {
+  display: none;
+  background-color: #060808;
+}
+body .video,
+body .video * {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 800;
+}
+body .video img {
+  z-index: 850;
+  opacity: 0.15;
+}
