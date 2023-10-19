@@ -1,7 +1,7 @@
 use ibex::prelude::*;
 use ibex::{routes, ssg};
 
-use bruhnews::ARTICLES;
+use bruhnews::{ARTICLES, BEST_HEADLINES};
 
 const URL_ROOT: &str = "/ibex/";
 
@@ -112,7 +112,7 @@ fn use_basic(children: View) -> View {
     view! {
         HEAD {
             @use_meta [Meta::new()
-                .desc("Subscribe to bruh.news for daily updates")
+                .desc(format!( "Subscribe to bruh.news for daily updates\nLatest: {}", BEST_HEADLINES.join(", ")))
                 .image(url!("static/icon.png"))
                 .color("#D80000")
                 .author("darcy")

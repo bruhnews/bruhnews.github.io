@@ -12,6 +12,13 @@ pub struct Article {
     pub description: &'static str,
 }
 
+/// The best headlines from the articles
+pub const BEST_HEADLINES: &[&str] = &[
+    ARTICLES[2].headline,
+    ARTICLES[3].headline,
+    ARTICLES[5].headline,
+];
+
 /// List of article headlines
 pub const ARTICLES: &[Article] = articles![
     (
