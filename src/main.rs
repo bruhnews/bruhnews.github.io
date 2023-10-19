@@ -3,7 +3,7 @@ use ibex::{routes, ssg};
 
 use bruhnews::ARTICLES;
 
-const URL_ROOT: &str = "/ibex-template/";
+const URL_ROOT: &str = "/ibex/";
 
 const REPO_URL: &str = "https://github.com/bruhnews/bruhnews.github.io";
 const SALE_URL: &str = "#"; //TODO
