@@ -15,8 +15,8 @@ fn main() {
         (/"help") => at_help(),
     ];
 
-    ssg::quick_build(routes).unwrap();
-    println!("All done!");
+    ssg::quick_build(routes).expect("Failed to build");
+    println!("\x1b[34;1mBuilt successfully!\x1b[0m");
 }
 
 fn at_index() -> Document {
@@ -40,51 +40,51 @@ fn homepage(mute_video: bool) -> View {
         }
 
         main {
-            h1 [class="header"] { "BruhNews - The Strongest News" }
-            @list
+            h1 ."header" { "BruhNews - The Strongest News" }
+            @list []
         }
 
-        div [class="modal-backdrop"] {
-            div [class="modal"] {
+        div ."modal-backdrop" {
+            div ."modal" {
                 h1 { "Notice" }
                 p {
                     "BruhNews uses cookies to improve your experience."
                     ~ "By using our website, you agree to cookies"
                 }
 
-                button [class="big", onclick="hide()"] { "Accept Cookies" }
+                button ."big" [onclick="hide()"] { "Accept Cookies" }
                 br/
                 button [onclick="hide()"] { "Disable All Cookies" }
             }
         }
 
-        section [class="video"] {
-            video [loop=true, id="video", preload="auto", muted?=mute_video] {
+        section ."video" {
+            video #"video" [loop=true, preload="auto", muted?=mute_video] {
                 source [src=url!("static/video.mp4"), type="video/mp4"]/
             }
-            script { r##"document.querySelector("#video").load();"## }
-            img [src=url!("static/image.png"), id="image"]/
+            script { "document.querySelector(\"#video\").load();" }
+            img #"image" [src=url!("static/image.png")]/
         }
     } }
 }
 
 fn list() -> View {
     view! {
-        ul [class="list"] {
-            [:for (i, article) in (ARTICLES.into_iter().enumerate()) {
-                li [class="article"] {
+        ul ."list" {
+            [:for (i, article) in ARTICLES.into_iter().enumerate() {
+                li ."article" {
                     a [href="#"] {
                         img [
                             alt=article.title,
                             src=url!(format!("static/thumbs/{}.jpg", i)),
                             height=50,
                         ]/
-                        div [class="text"] {
-                            div [class="wrap"] {
-                                h1 [class="headline"] { [article.headline] }
+                        div ."text" {
+                            div ."wrap" {
+                                h1 ."headline" { [article.headline] }
                                 p {
-                                    span [class="title"] { [article.title] ":" ~ }
-                                    span [class="description"] { [article.description] }
+                                    span ."title" { [article.title] ":" ~ }
+                                    span ."description" { [article.description] }
                                 }
                             }
                         }
@@ -98,7 +98,7 @@ fn list() -> View {
 fn at_404() -> Document {
     view! { @use_basic {
         main {
-            h1 [class="header"] { "BruhNews - 404" }
+            h1 ."header" { "BruhNews - 404" }
 
             h2 {
                 a [href=url!()] { ">> Back to home page <<" }
@@ -132,6 +132,8 @@ fn use_basic(children: View) -> View {
                 gtag("js", new Date());
                 gtag("config", "G-8Y8DXGJ04S");
             "#}
+
+            @ssg::use_autoreload []
         }
 
         [children]
