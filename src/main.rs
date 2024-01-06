@@ -20,17 +20,15 @@ fn main() {
 }
 
 fn at_index() -> Document {
-    view! {
+    document! { [lang="en"]
         @homepage[false]
     }
-    .into()
 }
 fn at_help() -> Document {
-    view! {
+    document! { [lang="en"]
         @homepage[true]
         script { "start();" }
     }
-    .into()
 }
 
 fn homepage(mute_video: bool) -> View {
@@ -58,12 +56,15 @@ fn homepage(mute_video: bool) -> View {
             }
         }
 
-        section ."video" {
-            video #"video" [loop=true, preload="auto", muted?=mute_video] {
+        div ."video" {
+            video #"video" [loop!, preload="auto", muted?=mute_video] {
                 source [src=url!("static/video.mp4"), type="video/mp4"]/
             }
             script { "document.querySelector(\"#video\").load();" }
-            img #"image" [src=url!("static/image.png")]/
+            img #"image" [
+                alt="Overlay image",
+                src=url!("static/image.png"),
+            ]/
         }
     } }
 }
@@ -96,7 +97,8 @@ fn list() -> View {
 }
 
 fn at_404() -> Document {
-    view! { @use_basic {
+    document! { [lang="en"]
+        @use_basic {
         main {
             h1 ."header" { "BruhNews - 404" }
 
@@ -105,7 +107,6 @@ fn at_404() -> Document {
             }
         }
     } }
-    .into()
 }
 
 fn use_basic(children: View) -> View {
@@ -123,7 +124,7 @@ fn use_basic(children: View) -> View {
             link [rel="shortcut icon", href=url!("static/icon.png")]/
             link [rel="stylesheet", href=url!("css/main.css")]/
 
-            script [async="true", src="https://www.googletagmanager.com/gtag/js?id=G-8Y8DXGJ04S"]/
+            script [async!, src="https://www.googletagmanager.com/gtag/js?id=G-8Y8DXGJ04S"]/
             script {r#"
                 window.dataLayer = window.dataLayer || [];
                 function gtag() {
